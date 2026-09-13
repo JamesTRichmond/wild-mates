@@ -103,4 +103,5 @@ export const currentPhaseId = 8;
 export const RUNLOG = [
   "2026-09-13 living-phases + dynamic-clicklist: opened phase 8. Parked clicks 1–6. Carried mating-act + census from 3 and 4. Repo private at JamesTRichmond/wild-mates.",
   "2026-09-13 clicks: 1 not yet. 2 stay private. 4 both (Grok + clone). 6 they will open Actions — two visual runs already green. 3 still waits on 1. 5 now open.",
+  "2026-09-13 click 5: no Vercel. Preview stays in this Grok project.",
 ] as const;
