@@ -11,6 +11,7 @@
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as CompareRouteImport } from './routes/compare'
+import { Route as DeskRouteImport } from './routes/desk'
 import { Route as IdentifyRouteImport } from './routes/identify'
 import { Route as SavedRouteImport } from './routes/saved'
 import { Route as StrategiesRouteImport } from './routes/strategies'
@@ -26,6 +27,11 @@ const IndexRoute = IndexRouteImport.update({
 const CompareRoute = CompareRouteImport.update({
   id: '/compare',
   path: '/compare',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const DeskRoute = DeskRouteImport.update({
+  id: '/desk',
+  path: '/desk',
   getParentRoute: () => rootRouteImport,
 } as any)
 const IdentifyRoute = IdentifyRouteImport.update({
@@ -62,6 +68,7 @@ const StrategiesSlugRoute = StrategiesSlugRouteImport.update({
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/compare': typeof CompareRoute
+  '/desk': typeof DeskRoute
   '/identify': typeof IdentifyRoute
   '/saved': typeof SavedRoute
   '/strategies': typeof StrategiesRouteWithChildren
@@ -72,6 +79,7 @@ export interface FileRoutesByFullPath {
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/compare': typeof CompareRoute
+  '/desk': typeof DeskRoute
   '/identify': typeof IdentifyRoute
   '/saved': typeof SavedRoute
   '/species/$slug': typeof SpeciesSlugRoute
@@ -82,6 +90,7 @@ export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
   '/compare': typeof CompareRoute
+  '/desk': typeof DeskRoute
   '/identify': typeof IdentifyRoute
   '/saved': typeof SavedRoute
   '/strategies': typeof StrategiesRouteWithChildren
@@ -94,6 +103,7 @@ export interface FileRouteTypes {
   fullPaths:
     | '/'
     | '/compare'
+    | '/desk'
     | '/identify'
     | '/saved'
     | '/strategies'
@@ -104,6 +114,7 @@ export interface FileRouteTypes {
   to:
     | '/'
     | '/compare'
+    | '/desk'
     | '/identify'
     | '/saved'
     | '/species/$slug'
@@ -113,6 +124,7 @@ export interface FileRouteTypes {
     | '__root__'
     | '/'
     | '/compare'
+    | '/desk'
     | '/identify'
     | '/saved'
     | '/strategies'
@@ -124,6 +136,7 @@ export interface FileRouteTypes {
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   CompareRoute: typeof CompareRoute
+  DeskRoute: typeof DeskRoute
   IdentifyRoute: typeof IdentifyRoute
   SavedRoute: typeof SavedRoute
   StrategiesRoute: typeof StrategiesRouteWithChildren
@@ -144,6 +157,13 @@ declare module '@tanstack/react-router' {
       path: '/compare'
       fullPath: '/compare'
       preLoaderRoute: typeof CompareRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/desk': {
+      id: '/desk'
+      path: '/desk'
+      fullPath: '/desk'
+      preLoaderRoute: typeof DeskRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/identify': {
@@ -208,6 +228,7 @@ const StrategiesRouteWithChildren = StrategiesRoute._addFileChildren(
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   CompareRoute: CompareRoute,
+  DeskRoute: DeskRoute,
   IdentifyRoute: IdentifyRoute,
   SavedRoute: SavedRoute,
   StrategiesRoute: StrategiesRouteWithChildren,
