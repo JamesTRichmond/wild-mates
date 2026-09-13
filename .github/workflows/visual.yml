@@ -1,0 +1,47 @@
+# Pixel diffs block the job. A red X without artifacts is a bug in this file.
+# Review: open the "visual-diffs" artifact (expected / actual / diff).
+# Intentional look change: npm run test:visual:update, inspect the PNGs, commit them.
+# Do not merge --update-snapshots that you have not looked at.
+#
+# Goldens were captured on linux Chromium matching playwright 1.63.
+# First run on a different OS will fail. Re-generate inside this container only.
+
+name: visual
+
+on:
+  pull_request:
+  push:
+    branches: [main, master]
+
+concurrency:
+  group: visual-${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  visual:
+    name: Pixel diffs
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    container:
+      image: mcr.microsoft.com/playwright:v1.63.0-noble
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Install
+        run: npm ci
+
+      - name: Compare to goldens
+        env:
+          CI: "true"
+        run: npm run test:visual
+
+      - name: Upload expected / actual / diff
+        if: failure()
+        uses: actions/upload-artifact@v4
+        with:
+          name: visual-diffs
+          path: |
+            test-results/
+            e2e/.report/
+          if-no-files-found: ignore
+          retention-days: 14

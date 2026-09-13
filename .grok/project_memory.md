@@ -1,0 +1,3 @@
+- Wild Mates is an educational Expo RN + FastAPI/MongoDB app about animal mating strategies (not a dating app). Source is not in this workspace; only artifacts/Wild Mates App.rtf (Emergent export log, 2026-09-11). [2026-09-11]
+- Wild Mates reported state from that export: 54 species, 9 strategies (incl. parthenogenesis, sneaker males, mate-guarding), Glass/Luxe DARK theme, tabs Discover/Identify/Strategies/Saved, Ask a Zoologist via Gemini SSE, Species of the Day UI-only (no real push), no auth, user testing not done. Treat as REPORTED not VERIFIED. [2026-09-11]
+- Do not confuse Wild Mates with inthewildapp.com, Wild Limited hookup app, MatesWilde repos, or JamesTRichmond/onto (SLC events). [2026-09-11]

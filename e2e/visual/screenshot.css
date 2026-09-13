@@ -1,0 +1,8 @@
+/* Capture-only. Hides motion and live counters so pixelmatch sees chrome, not a film. */
+video,
+[data-testid="clay-film"] {
+  visibility: hidden !important;
+}
+[data-testid="field-streak"] {
+  visibility: hidden !important;
+}

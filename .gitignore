@@ -1,0 +1,36 @@
+# deps & build
+node_modules/
+.output/
+.nitro/
+.tanstack/
+.vercel/
+dist/
+*.tsbuildinfo
+
+# env & logs
+.env
+.env.*
+!.env.example
+*.log
+.grok/preview.log
+.grok/status
+.node_modules.lock
+
+# playwright
+test-results/
+e2e/.report/
+playwright-report/
+blob-report/
+
+# sandbox dumps — not the product
+artifacts/
+attachments/
+screenshots/
+
+# Field Theatre is pinned, not in the player
+public/**/*theatre*
+
+# editor
+.DS_Store
+.idea/
+.vscode/
